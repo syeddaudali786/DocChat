@@ -14,8 +14,8 @@ MODEL = "BAAI/bge-small-en-v1.5"
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 TOP_K = 3
 
-st.set_page_config(page_title="Syed Daud", page_icon="💬")
-st.title("Profile Q&A ")
+st.set_page_config(page_title="Syed Daud Ali", page_icon="💬")
+st.title("Profile Q&A 💬")
 
 
 def get_key():
