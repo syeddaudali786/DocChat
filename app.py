@@ -69,7 +69,7 @@ def answer(question, context):
 
 
 model, vectors, chunks = load()
-question = st.text_input("Your question", placeholder="Questions about my profile, e.g. 'who i am?'")
+question = st.text_input("Your question", placeholder="Questions about my profile!")
 
 if question:
     hits = retrieve(question, model, vectors, chunks)
