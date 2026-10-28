@@ -15,8 +15,8 @@ GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 TOP_K = 3
 
 st.set_page_config(page_title="Ask about Daud", page_icon="💬")
-st.title("Ask about my profile")
-st.header("Retrieval is local; answers come from a Groq model.")
+st.title("Profile Q&A")
+
 
 def get_key():
     """.env first (local), then Streamlit secrets (deployed)."""
