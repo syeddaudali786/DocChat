@@ -15,7 +15,7 @@ GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 TOP_K = 3
 
 st.set_page_config(page_title="Syed Daud", page_icon="💬")
-st.title("Profile Q&A")
+st.title("Profile Q&A ")
 
 
 def get_key():
