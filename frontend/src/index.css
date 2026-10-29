@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Dark mode follows the .dark class on <html> (set in index.html / ThemeToggle) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --animate-toast-in: toast-in 0.25s ease-out;
+  --animate-fade-in: fade-in 0.3s ease-out;
+
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html { @apply antialiased; }
+  html.dark { color-scheme: dark; } /* native selects and scrollbars match the theme */
+  body { @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100; }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900
+      shadow-sm transition placeholder:text-slate-400
+      focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/15 focus:outline-none
+      dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500;
+  }
+  .input-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500/15 dark:border-red-500/70;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600
+      px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-indigo-500/20 transition
+      hover:from-indigo-500 hover:to-violet-500 hover:shadow-lg hover:shadow-indigo-500/25
+      focus-visible:ring-4 focus-visible:ring-indigo-500/30 focus-visible:outline-none
+      disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  /* Rendered markdown in assistant answers */
+  .markdown { @apply leading-relaxed text-slate-800 dark:text-slate-200; }
+  .markdown > * + * { @apply mt-3; }
+  .markdown h1, .markdown h2, .markdown h3 { @apply font-semibold text-slate-900 dark:text-white; }
+  .markdown h1 { @apply text-lg; }
+  .markdown h2 { @apply text-base; }
+  .markdown ul { @apply list-disc space-y-1 pl-5; }
+  .markdown ol { @apply list-decimal space-y-1 pl-5; }
+  .markdown a { @apply font-medium text-indigo-600 underline underline-offset-2 dark:text-indigo-400; }
+  .markdown strong { @apply font-semibold text-slate-900 dark:text-white; }
+  .markdown blockquote { @apply border-l-4 border-indigo-200 pl-3 text-slate-600 italic dark:border-indigo-800 dark:text-slate-400; }
+  .markdown code { @apply rounded bg-slate-100 px-1 py-0.5 font-mono text-[0.85em] dark:bg-slate-800; }
+  .markdown pre { @apply overflow-x-auto rounded-lg bg-slate-900 p-3 text-slate-100 dark:bg-slate-950; }
+  .markdown pre code { @apply bg-transparent p-0; }
+  .markdown table { @apply block w-full overflow-x-auto border-collapse text-xs; }
+  .markdown th, .markdown td { @apply border border-slate-200 px-2 py-1 text-left dark:border-slate-700; }
+  .markdown th { @apply bg-slate-50 font-semibold dark:bg-slate-800; }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-slate-600
+      transition hover:bg-slate-100 hover:text-slate-900
+      focus-visible:ring-4 focus-visible:ring-indigo-500/30 focus-visible:outline-none
+      dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white;
+  }
+}
