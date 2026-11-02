@@ -12,7 +12,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const COPY = {
   login: {
     title: 'Welcome to Best Chatbot Agent in the World!',
-    subtitle: 'Sign in to continue to your documents.',
+    subtitle: 'Sign in to continue!',
     submit: 'Sign in',
     switchText: "Don't have an account?",
     switchLink: 'Create one',
