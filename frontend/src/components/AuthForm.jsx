@@ -11,7 +11,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const COPY = {
   login: {
-    title: 'Welcome back to Documents Chat!',
+    title: 'Welcome to Documents Chat!',
     subtitle: 'Sign in to continue to your documents.',
     submit: 'Sign in',
     switchText: "Don't have an account?",
