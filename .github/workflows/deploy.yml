@@ -1,7 +1,9 @@
 name: Deploy
+
 on:
   push:
     branches: [main]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,21 +14,18 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          port: 22
+          script_stop: true
           script: |
-            set -e
             cd ~/DocChat
-            git pull origin main
+            git fetch origin
+            git reset --hard origin/main
 
-            # Backend
             cd backend
             .venv/bin/pip install --no-cache-dir -r requirements.txt
             .venv/bin/alembic upgrade head
             sudo systemctl restart rag-api
 
-            # Frontend
             cd ../frontend
             npm ci
             npm run build
-
-            sudo rsync -a --delete dist/ /var/www/profile-rag/
+            sudo cp -r dist/. /var/www/docchat/
