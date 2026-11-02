@@ -6,24 +6,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
           script: |
             set -e
-            cd ~/rag/RAG-EC2
+            cd ~/DocChat
             git pull origin main
+
             # Backend
             cd backend
             .venv/bin/pip install --no-cache-dir -r requirements.txt
             .venv/bin/alembic upgrade head
-            sudo systemctl restart profile-rag-api
+            sudo systemctl restart rag-api
+
             # Frontend
             cd ../frontend
             npm ci
             npm run build
-            rsync -a --delete dist/ /var/www/profile-rag/
 
-            
+            sudo rsync -a --delete dist/ /var/www/profile-rag/
