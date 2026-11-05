@@ -76,7 +76,7 @@ export default function ChatWindow({ chat, docs, scope, onScopeChange, onOpenSid
         <button type="button" onClick={onOpenSidebar} aria-label="Open sidebar" className="btn-ghost size-9 p-0 lg:hidden">
           <Menu className="size-5" />
         </button>
-        <h1 className="flex-1 truncate text-base font-semibold sm:text-lg">Ask your documents</h1>
+        <h1 className="flex-1 truncate text-base font-semibold sm:text-lg">Best Chatbot of the World</h1>
         <SearchScope documents={docs.readyDocuments} value={scope} onChange={onScopeChange} />
       </header>
 
